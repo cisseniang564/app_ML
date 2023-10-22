@@ -28,9 +28,12 @@ def page2():
     @st.cache_data
 
     def load_data():
-        data=pd.read_csv('/Users/cisseniang/Documents/Data/Données ML/Insurance.csv')
+        data=pd.read_csv('Insurance.csv')
         return data
     
+    #load_data = st.file_uploader()
+
+
     if choix == "Data et Infos":
         st.subheader("Afficher les données")
 
@@ -69,7 +72,7 @@ def page3():
 
  
         # Charger le modèle pré-entraîné
-        model = joblib.load('/Users/cisseniang/Documents/Data/Données ML/model.pkl')
+        model = joblib.load('model.pkl')
 
         # Interface utilisateur Streamlit
         st.title("Prédiction de Dépenses Médicales")
@@ -97,7 +100,7 @@ def page3():
 
     if choix == "Modèle de Régression":
 
-        model = joblib.load('/Users/cisseniang/Documents/Data/Données ML/model_reg.pkl')
+        model = joblib.load('model_reg.pkl')
 
         # Interface utilisateur Streamlit
         st.title("Prédiction de Dépenses Médicales")
