@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 import io
 import joblib
+import warnings
+warnings.filterwarnings("ignore")
 
 def main_page():
     #st.markdown("# Main page 🎈")
@@ -31,7 +33,7 @@ def page2():
         data=pd.read_csv('Insurance.csv')
         return data
     
-    #load_data = st.file_uploader()
+       
 
 
     if choix == "Data et Infos":
