@@ -27,7 +27,7 @@ chemin = "/Users/cisseniang/Documents/Data/Données ML/"
 path = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else '.'
 
 # Concaténez le chemin pour obtenir le chemin absolu du fichier 'photo.png'
-chemin = os.path.join(path, 'Insurance.csv')
+#chemin = os.path.join(path, 'Insurance.csv')
 
 def page2():
     st.markdown("# Analyse Exploratoire des données❄️")
@@ -42,7 +42,7 @@ def page2():
     
         # Obtenez le chemin du répertoire courant
      
-        with open(chemin, 'rb') as fichier:
+        with open(chemin+'/Insurance.csv', 'rb') as fichier:
             # Charger le modèle
             data = pd.read_csv(fichier)
 
@@ -66,10 +66,10 @@ def page2():
         st.subheader("Statistiques descriptives")
         
 
-        with open(chemin, 'rb') as fichier:
+        with open(chemin+'/Insurance.csv', 'rb') as fichier:
             # Charger le modèle
             data = pd.read_csv(fichier)
-        st.dataframe(data.describe())
+            st.dataframe(data.describe())
 
 
     
