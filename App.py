@@ -23,7 +23,7 @@ def main_page():
         st.write("2) https://chat.openai.com/")
         st.write("3) https://www.kaggle.com/datasets/noordeen/insurance-premium-prediction")
 
-chemin = "/Users/cisseniang/Documents/Data/Données ML/" 
+#chemin = "/Users/cisseniang/Documents/Data/Données ML/" 
 path = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else '.'
 
 # Concaténez le chemin pour obtenir le chemin absolu du fichier 'photo.png'
@@ -42,7 +42,7 @@ def page2():
     
         # Obtenez le chemin du répertoire courant
      
-        with open(chemin+'/Insurance.csv', 'rb') as fichier:
+        with open(path+'/Insurance.csv', 'rb') as fichier:
             # Charger le modèle
             data = pd.read_csv(fichier)
 
@@ -66,7 +66,7 @@ def page2():
         st.subheader("Statistiques descriptives")
         
 
-        with open(chemin+'/Insurance.csv', 'rb') as fichier:
+        with open(path+'/Insurance.csv', 'rb') as fichier:
             # Charger le modèle
             data = pd.read_csv(fichier)
             st.dataframe(data.describe())
