@@ -74,7 +74,14 @@ def page3():
 
  
         # Charger le modèle pré-entraîné
-        model = joblib.load('model.pkl')
+        modele_chemin1 = "/Users/cisseniang/Documents/Data/Données ML/model.pkl"
+
+        # Utilisation de with open pour ouvrir le fichier
+        with open(modele_chemin1, 'rb') as modele_fichier1:
+            # Charger le modèle
+            model = joblib.load(modele_fichier1)
+        
+        #model = joblib.load('model.pkl')
 
         # Interface utilisateur Streamlit
         st.title("Prédiction de Dépenses Médicales")
@@ -102,7 +109,14 @@ def page3():
 
     if choix == "Modèle de Régression":
 
-        model = joblib.load('model_reg.pkl')
+        modele_chemin = "/Users/cisseniang/Documents/Data/Données ML/model_reg.pkl"
+
+        # Utilisation de with open pour ouvrir le fichier
+        with open(modele_chemin, 'rb') as modele_fichier:
+            # Charger le modèle
+            model = joblib.load(modele_fichier)
+
+        #model = joblib.load('model_reg.pkl')
 
         # Interface utilisateur Streamlit
         st.title("Prédiction de Dépenses Médicales")
