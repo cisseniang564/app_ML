@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import io
 import joblib
+import os
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -22,7 +23,11 @@ def main_page():
         st.write("2) https://chat.openai.com/")
         st.write("3) https://www.kaggle.com/datasets/noordeen/insurance-premium-prediction")
 
-chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv" 
+chemin = "/Users/cisseniang/Documents/Data/Données ML/" 
+path = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else '.'
+
+# Concaténez le chemin pour obtenir le chemin absolu du fichier 'photo.png'
+chemin = os.path.join(path, 'Insurance.csv')
 
 def page2():
     st.markdown("# Analyse Exploratoire des données❄️")
@@ -33,7 +38,11 @@ def page2():
     if choix == "Data et Infos":
         st.subheader("Afficher les données")
     #def load_data(): 
-        #chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv"       
+        #chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv"
+    
+
+# Obtenez le chemin du répertoire courant
+     
         with open(chemin, 'rb') as fichier:
             # Charger le modèle
             data = pd.read_csv(fichier)
