@@ -21,7 +21,7 @@ def main_page():
         st.write("1) https://blog.streamlit.io/introducing-multipage-apps/")
         st.write("2) https://chat.openai.com/")
         st.write("3) https://www.kaggle.com/datasets/noordeen/insurance-premium-prediction")
-
+chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv" 
 def page2():
     st.markdown("# Analyse Exploratoire des données❄️")
     st.sidebar.markdown("# EDA ❄️")
@@ -29,38 +29,50 @@ def page2():
 
     @st.cache_data
 
-    def load_data():
-        data=pd.read_csv('Insurance.csv')
-        return data
-    
+    #def load_data():
+    #    data=pd.read_csv('Insurance.csv')
+    #    return data
+            
+    def load_data(): 
+        #chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv"       
+        with open(chemin, 'rb') as fichier:
+            # Charger le modèle
+            data = pd.read_csv(fichier)
        
 
 
     if choix == "Data et Infos":
         st.subheader("Afficher les données")
-
+    #def load_data(): 
+        #chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv"       
+        with open(chemin, 'rb') as fichier:
+            # Charger le modèle
+            data = pd.read_csv(fichier)
 
     #Affichage de la table de données
-        df = load_data()
+        #df = load_data()
  
-        df_sample = df.sample(100)
-    #st.write(df)
+        df_sample = data.sample(100)
+        #st.write(df)
         st.dataframe(df_sample)
         st.button("Rerun")
 
-        if 'df' in locals():
-            st.subheader("Infos sur la data")
+        
+        st.subheader("Infos sur la data")
 
-            buffer = io.StringIO()
-            df.info(buf=buffer)
-            s = buffer.getvalue()
-            st.text(s)
+        buffer = io.StringIO()
+        data.info(buf=buffer)
+        s = buffer.getvalue()
+        st.text(s)
         
     if choix == "Analyse descriptive":
         st.subheader("Statistiques descriptives")
-        df = load_data()
-        if 'df' in locals():
-            st.dataframe(df.describe())
+        
+
+        with open(chemin, 'rb') as fichier:
+            # Charger le modèle
+            data = pd.read_csv(fichier)
+        st.dataframe(data.describe())
 
 
     
