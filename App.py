@@ -40,8 +40,7 @@ def page2():
     #def load_data(): 
         #chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv"
     
-
-# Obtenez le chemin du répertoire courant
+        # Obtenez le chemin du répertoire courant
      
         with open(chemin, 'rb') as fichier:
             # Charger le modèle
@@ -84,14 +83,10 @@ def page3():
 
  
         # Charger le modèle pré-entraîné
-        modele_chemin1 = "/Users/cisseniang/Documents/Data/Données ML/model.pkl"
+        #modele_chemin1 = "/Users/cisseniang/Documents/Data/Données ML/model.pkl"
+        #model_ridge = os.path.join(path, 'model.pkl')
+        model_ridge = joblib.load(open(path+'/model.pkl', 'rb'))
 
-        # Utilisation de with open pour ouvrir le fichier
-        with open(modele_chemin1, 'rb') as modele_fichier1:
-            # Charger le modèle
-            model = joblib.load(modele_fichier1)
-        
-        #model = joblib.load('model.pkl')
 
         # Interface utilisateur Streamlit
         st.title("Prédiction de Dépenses Médicales")
@@ -112,21 +107,15 @@ def page3():
         # Prédictions
         input_features = [[age, bmi, children, 1 if sex == 'male' else 0, 1 if smoker == 'yes' else 0,
                         1 if region == 'southeast' else 0]]
-        prediction = model.predict(input_features)
+        prediction = model_ridge.predict(input_features)
 
         # Afficher le résultat
         st.write(f"La prédiction des dépenses médicales est : {prediction[0]:.2f} $")
 
     if choix == "Modèle de Régression":
 
-        modele_chemin = "/Users/cisseniang/Documents/Data/Données ML/model_reg.pkl"
-
-        # Utilisation de with open pour ouvrir le fichier
-        with open(modele_chemin, 'rb') as modele_fichier:
-            # Charger le modèle
-            model = joblib.load(modele_fichier)
-
-        #model = joblib.load('model_reg.pkl')
+ 
+        model_reg = joblib.load(open(path+'/model_reg.pkl', 'rb'))
 
         # Interface utilisateur Streamlit
         st.title("Prédiction de Dépenses Médicales")
@@ -147,7 +136,7 @@ def page3():
         # Prédictions
         input_features = [[age, bmi, children, 1 if sex == 'male' else 0, 1 if smoker == 'yes' else 0,
                         1 if region == 'southeast' else 0]]
-        prediction = model.predict(input_features)
+        prediction = model_reg.predict(input_features)
 
         # Afficher le résultat
         st.write(f"La prédiction des dépenses médicales est : {prediction[0]:.2f} $")
