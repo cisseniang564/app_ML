@@ -21,25 +21,14 @@ def main_page():
         st.write("1) https://blog.streamlit.io/introducing-multipage-apps/")
         st.write("2) https://chat.openai.com/")
         st.write("3) https://www.kaggle.com/datasets/noordeen/insurance-premium-prediction")
+
 chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv" 
+
 def page2():
     st.markdown("# Analyse Exploratoire des données❄️")
     st.sidebar.markdown("# EDA ❄️")
     choix = st.sidebar.radio("Sélection", ["Data et Infos", "Analyse descriptive"])
-
-    @st.cache_data
-
-    #def load_data():
-    #    data=pd.read_csv('Insurance.csv')
-    #    return data
-            
-    def load_data(): 
-        #chemin = "/Users/cisseniang/Documents/Data/Données ML/Insurance.csv"       
-        with open(chemin, 'rb') as fichier:
-            # Charger le modèle
-            data = pd.read_csv(fichier)
-       
-
+ 
 
     if choix == "Data et Infos":
         st.subheader("Afficher les données")
